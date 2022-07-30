@@ -1,22 +1,20 @@
+
 const script = document.createElement('script')
 script.type = 'text/javascript'
 script.addEventListener('load', () => {
-  alert('loaded script');
+  // alert('loaded script');
   window.my = true;
 })
 script.src = 'https://appx/web-view.min.js'
 document.getElementsByTagName('head')[0].appendChild(script);
 
 const getScript = () => {
-  alert('axios get script called');
-  fetch('https://appx/web-view.min.js', {
-    method: 'GET',
-  }).then(resp => {
-    alert('axios get script done' + JSON.stringify(resp.data));
+  alert('function to get the script');
+  axios.get('https://appx/web-view.min.js').then(resp => {
+    alert('script loaded' + JSON.stringify(resp.data));
   }).catch(e => {
-    alert('axios get script error: ' + e);
-    alert('axios get script error: ' + JSON.stringify(e));
-    alert('axios get script error: ' + JSON.stringify(e.response));
+    alert('script error: ' + e);
+    alert('script error: ' + JSON.stringify(e));
   });
 };
 
