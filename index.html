@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="https://appx/web-view.min.js"></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,5 +14,23 @@
     Wait for the axios get request to be executed. <br /> The alerts will either showcase the loaded script
     or the error message.
   </h1>
+  <script>
+      // Send message to Mini Program.
+      setTimeout(() => {
+
+        try {
+
+          my.postMessage({name:"test web-view"});
+
+          // Did receive message from Mini Program.
+          my.onMessage = function(e) {
+            alert(JSON.stringify(e)); // {'sendToWebView': '1'}
+          }
+        } catch(e) {
+          alert(e);
+        }
+      }, 5000);
+
+  </script>
 </body>
 </html>
